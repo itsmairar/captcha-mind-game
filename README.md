@@ -55,15 +55,6 @@ Ou configure manualmente:
 - Build command: `pip install -r requirements.txt`
 - Start command: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
 
-## Integração com Google reCAPTCHA (opcional)
-1. Crie chave em https://www.google.com/recaptcha/admin
-2. No HTML (`captcha.html`):
-```html
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<button class="g-recaptcha" data-sitekey="SUA_CHAVE_SITE" data-callback='onSubmit'>Verificar</button>
-```
-3. No backend, valide o token com a API oficial.
-
 ## Testes
 ```bash
 PYTHONPATH=./ pytest tests/
