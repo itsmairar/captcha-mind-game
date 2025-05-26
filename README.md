@@ -1,66 +1,73 @@
-# 🧠 CAPTCHA Mind Game
+# CAPTCHA Mind Game
 
-Um CAPTCHA em formato de mini-jogo lógico, feito com FastAPI e frontend visual imersivo.
+Um CAPTCHA em formato de mini-jogo lógico, feito com FastAPI, lógica cognitiva e visual imersivo. Agora com modo fácil/difícil, tempo limite e efeito de confetes ao vencer.
 
-## 🚀 Demonstração
+## Demonstração
 ![screenshot](screenshot.png)
 
-## 🎯 Objetivo
-Desafiar o usuário com enigmas mentais e proteger sua aplicação contra bots com estilo.
+## Objetivo
+Desafiar o usuário com enigmas mentais e proteger sua aplicação contra bots com estilo. Um CAPTCHA que exige inteligência, não apenas cliques.
 
 ---
 
-## 📦 Estrutura do projeto
+## Estrutura do projeto
 ```
 captcha-mind-game/
 ├── app/
 │   ├── main.py              # Entry point da aplicação
-│   ├── logic.py             # Lógica dos desafios
+│   ├── logic.py             # Lógica dos desafios (easy/hard)
 │   ├── templates/           # HTMLs do jogo
-│   └── static/              # Estilo visual
+│   └── static/              # Estilo visual e animações
 ├── tests/
 │   └── test_logic.py        # Testes unitários
 ├── requirements.txt         # Dependências
 ├── uvicorn.sh               # Script para rodar local
+├── render.yaml              # Deploy automático na Render
 ├── .gitignore               # Boas práticas
 └── README.md
 ```
 
-## 🛠️ Como rodar localmente
+## Como rodar localmente
 ```bash
 git clone https://github.com/seunome/captcha-mind-game.git
 cd captcha-mind-game
 python -m venv venv
-source venv/bin/activate  # ou venv\Scripts\activate no Windows
+source venv/bin/activate
 pip install -r requirements.txt
 bash uvicorn.sh
 ```
 Acesse: [http://localhost:8000](http://localhost:8000)
 
-## 🌐 Deploy gratuito na Render
-- Crie uma conta em [https://render.com](https://render.com)
-- Crie um novo web service com:
-  - Build command: `pip install -r requirements.txt`
-  - Start command: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
+## Funcionalidades
+- Mini-jogos com lógica proposicional
+- Confetes animados ao acertar
+- Timer regressivo de 40 segundos
+- Botão para escolher entre modo fácil ou difícil
+- Totalmente responsivo e animado com CSS
 
-## 🔐 Integração com Google reCAPTCHA (v2 ou v3)
-1. Crie uma chave de site em https://www.google.com/recaptcha/admin
-2. Adicione o script no HTML `captcha.html`
+## Deploy gratuito na Render
+1. Crie conta em https://render.com
+2. Suba esse projeto no GitHub
+3. Acesse New > Web Service
+4. Conecte ao seu repositório e aceite o render.yaml
+
+Ou configure manualmente:
+- Build command: `pip install -r requirements.txt`
+- Start command: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
+
+## Integração com Google reCAPTCHA (opcional)
+1. Crie chave em https://www.google.com/recaptcha/admin
+2. No HTML (`captcha.html`):
 ```html
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<button class="g-recaptcha" data-sitekey="SUA_CHAVE_SITE" data-callback='onSubmit'>Verificar</button>
 ```
-3. No botão:
-```html
-<button class="g-recaptcha"
-        data-sitekey="SUA_CHAVE_SITE"
-        data-callback='onSubmit'>Verificar</button>
-```
-4. No backend: valide o token reCAPTCHA com a API Google antes de aceitar a resposta.
+3. No backend, valide o token com a API oficial.
 
-## 🧪 Testes
+## Testes
 ```bash
-pytest
+PYTHONPATH=./ pytest tests/
 ```
 
-## ✨ Inspiração
-Mistura de lógica proposicional + design sci-fi + criatividade para desafiar bots e humanos.
+## Inspiração
+Mistura de lógica, design sci-fi e interatividade para desafiar bots e humanos com estilo. Ideal para portfólio, entrevistas ou proteção divertida de formulários.

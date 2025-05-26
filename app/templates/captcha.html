@@ -1,17 +1,34 @@
+<!-- templates/captcha.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>Desafio de Lógica - TrackBot</title>
   <link rel="stylesheet" href="/static/style.css">
+  <script>
+    let tempoRestante = 40;
+    function atualizarTimer() {
+      const timerEl = document.getElementById('timer');
+      if (tempoRestante > 0) {
+        tempoRestante--;
+        timerEl.textContent = `Tempo restante: ${tempoRestante}s`;
+      } else {
+        document.querySelector('.portas-form').innerHTML = '<p class="erro">Tempo esgotado! Recarregue a página para tentar novamente.</p>';
+        clearInterval(contador);
+      }
+    }
+    let contador = setInterval(atualizarTimer, 1000);
+  </script>
 </head>
 <body>
   <div class="container">
     <h1 class="titulo">Desbloqueie o portal</h1>
     <p class="desafio">{{ desafio }}</p>
+    <p id="timer" style="font-size: 1.2rem; color: #ffcc00; margin-bottom: 1rem;">Tempo restante: 40s</p>
 
     <form action="/validar" method="post" class="portas-form">
       <input type="hidden" name="resposta" value="{{ resposta }}">
+      <input type="hidden" name="criado_em" value="{{ criado_em }}">
       {% for porta in portas %}
         <button type="submit" name="escolha" value="{{ loop.index0 }}" class="porta">
           <div class="n-porta">Porta {{ loop.index }}</div>
