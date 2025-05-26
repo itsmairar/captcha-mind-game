@@ -8,7 +8,6 @@ venv/
 .Python
 .envrc
 .DS_Store
-screenshot.png
 .pytest_cache
 __pycache__
 venv
