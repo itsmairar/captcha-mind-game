@@ -59,6 +59,3 @@ Ou configure manualmente:
 ```bash
 PYTHONPATH=./ pytest tests/
 ```
-
-## Inspiração
-Mistura de lógica, design sci-fi e interatividade para desafiar bots e humanos com estilo. Ideal para portfólio, entrevistas ou proteção divertida de formulários.
