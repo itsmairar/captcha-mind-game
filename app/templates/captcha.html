@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Desafio de Lógica - TrackBot</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="titulo">Desbloqueie o portal</h1>
+    <p class="desafio">{{ desafio }}</p>
+
+    <form action="/validar" method="post" class="portas-form">
+      <input type="hidden" name="resposta" value="{{ resposta }}">
+      {% for porta in portas %}
+        <button type="submit" name="escolha" value="{{ loop.index0 }}" class="porta">
+          <div class="n-porta">Porta {{ loop.index }}</div>
+          <div class="txt-porta">{{ porta }}</div>
+        </button>
+      {% endfor %}
+    </form>
+  </div>
+</body>
+</html>

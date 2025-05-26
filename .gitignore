@@ -1,0 +1,14 @@
+# .gitignore
+__pycache__/
+venv/
+.env
+*.pyc
+*.pyo
+*.pyd
+.Python
+.envrc
+.DS_Store
+screenshot.png
+.pytest_cache
+__pycache__
+venv
